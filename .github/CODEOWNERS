@@ -1,0 +1,13 @@
+# CODEOWNERS for .github repository 
+# Organization level  - this applies unless overridden by repo level CODEOWNERS
+
+# Ownership of the CODEOWNERS file itself in each repo
+.github/CODEOWNERS                                  @espressif/admins
+
+# Ownership of security policy
+.github/SECURITY.md                                 @espressif/security
+
+# Ownership of global CI workflows (if present)
+.github/workflows/                                  @espressif/ci
+.github/ISSUE_TEMPLATE                              @espressif/ci
+.github/pull_request_template.md                    @espressif/ci
