@@ -1,0 +1,6 @@
+{
+	"name": "CI Workflow",
+	"description": "A reusable workflow for running CI tests.",
+	"iconName": "nodejs",
+	"categories": ["Continuous integration", "Node.js"]
+}

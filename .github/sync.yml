@@ -1,0 +1,13 @@
+# tomassebestik-test-org/new-repo-example-09-01-24:
+#   - .github/workflows/issue_comment.yml
+
+# tomassebestik-test-org/testorg-useimage:
+#   - .github/workflows/issue_comment.yml
+---
+group:
+  - files:
+      - source: .github/workflows/
+        dest: .github/workflows/
+    repos: |
+      tomassebestik-test-org/new-repo-example-09-01-24
+      tomassebestik-test-org/testorg-useimage

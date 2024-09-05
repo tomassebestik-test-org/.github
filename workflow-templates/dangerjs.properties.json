@@ -1,0 +1,6 @@
+{
+	"name": "Espressif DangerJS",
+	"description": "Danger JS in GitHub Pull Requests. More details is espressif/shared-github-dangerjs",
+	"iconName": "dangerjs",
+	"categories": ["Espressif","Linter", "Node.js", "TypeScript"]
+}
