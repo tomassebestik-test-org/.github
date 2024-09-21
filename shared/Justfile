@@ -1,0 +1,23 @@
+set quiet := true
+
+[private]
+default:
+    just --choose --unsorted
+
+checks:
+    pre-commit run
+
+checks-autoupgrade:
+    pre-commit autoupgrade
+
+checks-docs:
+    pre-commit run codespell
+    pre-commit run mdformat
+    pre-commit run yamlfix
+
+rebase:
+    git fetch --all
+    git rebase -i origin/master  # update base branch if not master
+
+reload-shell:
+    exec $SHELL

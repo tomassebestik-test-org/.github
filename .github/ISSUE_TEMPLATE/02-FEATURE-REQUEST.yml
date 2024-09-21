@@ -1,6 +1,8 @@
+---
 name: "\U0001F4A1 Feature Request"
 description: "Suggest a new feature or enhancement"
 labels: ["Type: Feature Request"]
+
 body:
   - id: checklist
     type: checkboxes

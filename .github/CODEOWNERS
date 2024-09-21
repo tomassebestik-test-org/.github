@@ -1,13 +1,26 @@
-# CODEOWNERS for .github repository 
-# Organization level  - this applies unless overridden by repo level CODEOWNERS
+# CODEOWNERS in organization ".github" repository
+# Organization level - this applies unless overridden by repo level CODEOWNERS
 
-# Ownership of the CODEOWNERS file itself in each repo
-.github/CODEOWNERS                                  @espressif/admins
+# Lines starting with '#' are comments.
+# Each line is a file pattern followed by one or more owners.
 
-# Ownership of security policy
-.github/SECURITY.md                                 @espressif/security
+# More details are here: https://help.github.com/articles/about-codeowners/
 
-# Ownership of global CI workflows (if present)
-.github/workflows/                                  @espressif/ci
-.github/ISSUE_TEMPLATE                              @espressif/ci
-.github/pull_request_template.md                    @espressif/ci
+# The '*' pattern is global owners.
+# Works with fnmatch pattern matching, similar to .gitignore.
+
+# Order is important. The last matching pattern has the most precedence.
+# The folders are ordered as follows:
+
+# In each subsection folders are ordered first by depth, then alphabetically.
+# This should make it easy to add new rules without breaking existing ones.
+
+# ---------------------------------------------------------------------
+
+# Global rule (project lead developer):
+*                                          @tomassebestik
+
+# Owned by the CI team:
+/.github/                                  @espressif/ci
+/workflow-templates/                       @espressif/ci
+.pre-commit-config.yaml                    @espressif/ci

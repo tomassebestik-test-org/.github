@@ -12,13 +12,13 @@ run-name: >
       github.event_name == 'workflow_dispatch' && 'Manual Sync' }}
 
 on:
-  issues: { types: [opened] }
-  issue_comment: { types: [created, edited, deleted] }
+  issues: {types: [opened]}
+  issue_comment: {types: [created, edited, deleted]}
   schedule: [cron: '0 * * * *']
   workflow_dispatch:
     inputs:
-      action: { description: 'Action to be performed', required: true, default: 'mirror-issues' }
-      issue-numbers: { description: 'Issue numbers to sync (comma-separated)', required: true }
+      action: {description: 'Action to be performed', required: true, default: 'mirror-issues'}
+      issue-numbers: {description: 'Issue numbers to sync (comma-separated)', required: true}
 
 jobs:
   sync-to-jira:
@@ -46,4 +46,3 @@ jobs:
           JIRA_PASS: ${{ secrets.JIRA_PASS }}
           JIRA_URL: ${{ secrets.JIRA_URL }}
           JIRA_USER: ${{ secrets.JIRA_USER }}
-

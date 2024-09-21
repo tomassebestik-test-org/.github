@@ -1,0 +1,49 @@
+---
+# NOTE: THIS WORKFLOW IS INTENDED TO BE USED ONLY IN THE .GITHUB ORG REPOSITORY.
+#  THERE IS NO POINT TO COPY IT TO INDIVIDUAL PROJECTS.
+
+# This workflow synchronizes issue labels across all PUBLIC repositories in the organization
+#  where the workflow is running, excluding repositories in which the label `CI: No Sync Labels` was manually created.
+
+# Aliasing ensures that if standard GitHub labels were used, they will be updated to org standard and
+#  don't lose issues and PRs that have been labeled previously.
+
+# Custom repo labels that are not in the org standard WILL NOT BE TOUCHED; this is not a destructive process.
+#  (however repo admins should consider using org standard labels to ensure consistency)
+
+name: ♻️  Sync organization issue Labels
+
+on:
+  workflow_dispatch:
+  push: {paths: '.github/org-standard-labels.yml', branches: ['main', 'master']}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  sync-labels:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: List repositories in organization ${{ github.repository_owner }}
+        run: |
+          repos=$(gh repo list ${{ github.repository_owner }} --source --no-archived --visibility="public" --limit=999 --json nameWithOwner,labels --jq '
+            .[] |
+            select(.labels == null or (.labels | map(select(.name == "CI: No Sync Labels")) | length == 0)) |
+            .nameWithOwner
+          ')
+          echo "REPOS<<EOF" >> $GITHUB_ENV
+          echo "$repos" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Run Label Sync
+        uses: srealmoreno/label-sync-action@v1
+        with:
+          token: ${{ secrets.GH_PAT }}
+          repositories: ${{ env.REPOS }}
+          config-file: '.github/org-standard-labels.yml'

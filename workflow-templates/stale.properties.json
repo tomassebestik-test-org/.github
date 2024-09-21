@@ -1,0 +1,6 @@
+{
+	"name": "Stale issues and PRs",
+	"description": "Close stale issues and PRs",
+	"iconName": "stale",
+	"categories": ["Espressif","Stale"]
+}

@@ -1,0 +1,35 @@
+---
+version: 2
+
+updates:
+  # -- GitHub actions - this should work in every repo --
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'sunday'
+    commit-message:
+      prefix: 'ci(dependabot-actions): '
+    reviewers: ['tsesptest/ci']
+
+  # -- Uncomment if your project uses Python --
+  # - package-ecosystem: "pip"
+  #   versioning-strategy: increase-if-necessary
+  #   directory: "/"
+  #   schedule:
+  #     interval: "weekly"
+  #     day: "sunday"
+  #   commit-message:
+  #     prefix: "ci(dependabot-pip): "
+  #   reviewers: ["tsesptest/ci"]
+
+  # -- Uncomment if your project uses nodejs/npm --
+  # - package-ecosystem: "npm"
+  #   versioning-strategy: increase-if-necessary
+  #   directory: "/"
+  #   schedule:
+  #     interval: "weekly"
+  #     day: "sunday"
+  #   commit-message:
+  #     prefix: "ci(dependabot-npm): "
+  #   reviewers: ["tsesptest/ci"]

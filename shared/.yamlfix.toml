@@ -1,0 +1,7 @@
+# Yamlfix tool configuration, used by pre-commit hooks (alternative to pyproject.toml)
+comments_min_spaces_from_content = 1
+line_length = 200
+preserve_quotes = true
+section_whitelines = 1
+sequence_style = "keep_style"
+whitelines = 1

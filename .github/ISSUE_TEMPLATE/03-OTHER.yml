@@ -1,6 +1,8 @@
+---
 name: "\U0001F4AD Other Issue or Suggestion"
 description: "Share any suggestions or issues that aren't related to bugs or feature requests."
 labels: ["Type: Question"]
+
 body:
   - id: checklist
     type: checkboxes

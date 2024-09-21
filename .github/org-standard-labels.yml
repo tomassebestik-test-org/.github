@@ -1,0 +1,111 @@
+---
+# Issue types
+- name: 'Type: Bug'
+  description: 'Bug report'
+  color: '#ee0701'
+  aliases: ['bug']
+
+- name: 'Type: Feature Request'
+  description: 'Feature request'
+  color: '#84b6eb'
+  aliases: ['enhancement']
+
+- name: 'Type: Doc'
+  description: 'Issue related to project documentation'
+  color: '#5319e7'
+  aliases: ['documentation']
+
+- name: 'Type: Performance'
+  description: 'Issue related to project performance'
+  color: '#fbca04'
+
+# Resolutions (Normally set by JIRA automation process, if synced with JIRA)
+- name: 'Resolution: Cannot Reproduce'
+  description: 'Issue cannot be reproduced'
+  color: '#C2E0C6'
+
+- name: 'Resolution: Duplicate'
+  description: 'This issue or pull request already exists'
+  color: '#C2E0C6'
+  aliases: ['duplicate']
+
+- name: "Resolution: Won't Do"
+  description: 'This will not be worked on'
+  color: '#C2E0C6'
+  aliases: ['wontfix']
+
+- name: 'Resolution: Done'
+  description: 'Issue is done internally'
+  color: '#C2E0C6'
+
+- name: 'Resolution: NA'
+  description: 'Issue resolution is unavailable'
+  color: '#C2E0C6'
+
+# Work status (Normally set by JIRA automation process, if synced with JIRA)
+- name: 'Status: In Progress'
+  description: 'Work is in progress'
+  color: '#1D76DB'
+
+- name: 'Status: Pending'
+  description: 'Blocked by some other factor'
+  color: '#fef2c0'
+
+- name: 'Status: Opened'
+  description: 'Issue is new, not started'
+  color: '#EDEDED'
+
+- name: 'Status: Done'
+  description: 'Issue is done internally'
+  color: '#0E8A16'
+
+- name: 'Status: Reviewing'
+  description: 'Issue is being reviewed'
+  color: '#1D76DB'
+
+- name: 'Status: Resolved'
+  description: 'Issue is done internally'
+  color: '#0E8A16'
+
+- name: 'Status: Cancelled'
+  description: 'Canceled in progress'
+  color: '#0E8A16'
+
+- name: 'Status: Awaiting Response'
+  description: 'Awaiting a response from the author'
+  color: '#FF1493'
+
+- name: 'Status: Selected for Development'
+  description: 'We will start soon'
+  color: '#ededed'
+
+# Work status from `stale.yml` action
+- name: 'Status: Stale'
+  description: 'Marked as stale by GH workflow `stale.yml`'
+  color: '#A40B8C'
+
+- name: 'Status: Closed as Inactive'
+  description: 'Closed by GH workflow `stale.yml`'
+  color: '#D9AEC5'
+
+# Without categories
+- name: 'Help wanted'
+  description: 'Need some help with this one'
+  color: '#008672'
+  aliases: ['help wanted']
+
+- name: 'Good first issue'
+  description: 'Good for newcomers'
+  color: '#7057ff'
+  aliases: ['good first issue']
+
+- name: 'Invalid'
+  description: "This doesn't seem right"
+  color: '#e4e669'
+  aliases: ['invalid']
+
+# Labels affecting automation processes
+- name: 'CI: Prevent stale'
+  description: "(automation) If set, issue or PR will be never marked as stale / closed"
+  color: '#FEFFFF'
+  aliases: ['invalid']

@@ -1,0 +1,95 @@
+---
+# NOTE: THIS WORKFLOW IS INTENDED TO BE USED ONLY IN THE .GITHUB ORG REPOSITORY.
+#  THERE IS NO POINT TO COPY IT TO INDIVIDUAL PROJECTS.
+
+# This configuration file is used by a GitHub Action "sync-org-files" job to synchronize specific files
+#  from this base repository to a list of other repositories in the organization. Each group
+#  defines a set of files that need to be synced and the target repositories where these files
+#  should be copied.
+# The groups are defined independently, meaning each group contains its
+#  own set of files and list of target repositories. This structure allows for flexibility
+#  in syncing different files to different sets of repositories.
+#
+# The structure includes multiple groups, each representing different types of files
+#  (e.g., Dependabot, pre-commit configurations, workflows, LICENSE, etc.) and the
+#  repositories that require them.
+
+group:
+  # Dependabot Configuration
+  # Synchronizes the Dependabot configuration file (.github/dependabot.yml) from this repository
+  #  to the listed target repositories. Dependabot helps manage dependency updates in the repositories.
+  - files:
+      - source: .github/dependabot.yml # Source file path in the base repo
+        dest: .github/dependabot.yml # Destination path in the target repos
+        deleteOrphaned: true
+    repos: | # List of target repositories
+      tsesptest/testorg-useimage
+      tsesptest/new-repo-example-09-01-24
+      tsesptest/new-repo-092024
+
+  # Pre-commit Config
+  # Synchronizes the shared pre-commit configuration file (.pre-commit-config.yaml) to the specified repositories
+  - files:
+      - source: .pre-commit-config.yaml
+        dest: .pre-commit-config.yaml
+        deleteOrphaned: true
+    repos: |
+      tsesptest/new-repo-example-09-01-24
+      tsesptest/new-repo-092024
+
+  # Pre-commit Config with Additional Files
+  # Similar to the previous group, but also includes independent config files (e.g., .cz.toml and
+  # .yamlfix.toml) - alternative to pyproject.toml for non-python projects
+  - files:
+      - source: shared/.pre-commit-config.yaml
+        dest: .pre-commit-config.yaml
+        deleteOrphaned: true
+      - source: shared/.cz.toml # Commitizen config file
+        dest: shared/.cz.tom
+        deleteOrphaned: truel
+      - source: shared/.yamlfix.toml # Yamlfix config file
+        dest: shared/.yamlfix.toml
+        deleteOrphaned: true
+    repos: |
+      tsesptest/testorg-useimage
+
+  # Espressif GitHub Actions Workflows - Default
+  # Synchronizes the default GitHub Actions workflow files used for CI processes, such as
+  # DangerJS checks, pre-commit hooks, and Jira synchronization workflows.
+  - files:
+      - source: workflow-templates
+        dest: .github/workflows/
+        exclude: |
+          *.svg
+          *.json
+    repos: |
+      tsesptest/testorg-useimage
+      tsesptest/new-repo-example-09-01-24
+      tsesptest/new-repo-092024
+
+  # Espressif GitHub Actions Workflows - Release (Currently Disabled)
+  # Intended to synchronize the release-related workflow file to a specific repository.
+  # This block is currently commented out, but can be enabled when needed.
+  # - files:
+  #     - source: workflow-templates/release.yml
+  #       dest: .github/workflows/release.yml
+  #   repos: |
+  #     tsesptest/testorg-createimage
+
+  # Apache LICENSE File
+  - files:
+      - source: LICENSE
+        dest: LICENSE
+    repos: |
+      tsesptest/testorg-useimage
+      tsesptest/new-repo-example-09-01-24
+      tsesptest/new-repo-092024
+
+  # Basic Justfile
+  - files:
+      - source: Justfile
+        dest: Justfile
+    repos: |-
+      tsesptest/testorg-useimage
+      tsesptest/new-repo-example-09-01-24
+      tsesptest/new-repo-092024

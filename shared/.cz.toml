@@ -1,0 +1,11 @@
+# Commitizen tool configuration, used by pre-commit hooks and CZ (alternative to pyproject.toml)
+
+annotated_tag              = true
+bump_message               = 'change(bump): release $current_version → $new_version'
+changelog_merge_prerelease = true
+name                       = "czespressif"
+tag_format                 = "v$version"
+update_changelog_on_bump   = true
+# version                    = "0.1.0"                                                 # Uncomment and fill the version
+# version_files              = ["<your_src>/__init__.py"]                              # Uncomment and fill path to the version_files if used
+version_provider           = "commitizen"
