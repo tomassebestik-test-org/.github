@@ -1,0 +1,18 @@
+# Only for tools settings (pre-commit hooks and commitizen)
+[tool.yamlfix]
+    comments_min_spaces_from_content = 1
+    line_length                      = 200
+    preserve_quotes                  = true
+    section_whitelines               = 1
+    sequence_style                   = "keep_style"
+    whitelines                       = 1
+
+[tool.commitizen]
+    annotated_tag              = true
+    bump_message               = 'change(bump): release $current_version → $new_version'
+    changelog_merge_prerelease = true
+    name                       = "czespressif"
+    tag_format                 = "v$version"
+    update_changelog_on_bump   = true
+    version                    = "0.1.0"
+    version_provider           = "commitizen"

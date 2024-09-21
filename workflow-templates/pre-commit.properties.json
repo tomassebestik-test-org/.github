@@ -1,8 +1,6 @@
 {
-	"name": "Espressif Pre-commit",
-	"description": "Espressif CI workflow template for pre-commit",
+	"name": "Pre-commit",
+	"description": "Pre-commit hooks workflow for PR",
 	"iconName": "pre-commit",
 	"categories": ["Espressif","GitHooks", "Python"]
 }
-
-
