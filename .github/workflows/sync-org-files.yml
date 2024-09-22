@@ -27,11 +27,11 @@ jobs:
       - name: Run GitHub File Sync
         uses: BetaHuhn/repo-file-sync-action@v1
         with:
-          SKIP_PR: true # Skips the creation of a PR if set to true.
+          # SKIP_PR: true # Skips the creation of a PR if set to true.
           ASSIGNEES: ${{ github.actor }} # Automatically assigns the user who triggers the workflow.
           BRANCH_PREFIX: automation # Branch prefix used for the sync PRs.
           COMMIT_PREFIX: 'ci(sync-org-files): ' # Prefix for commit messages.
-          CONFIG_PATH: .github/sync-org-files-config.yml # Path to the sync configuration file.
+          CONFIG_PATH: .github/org-sync-files # Path to the sync configuration file.
           GH_PAT: ${{ secrets.GH_PAT }} # Use an organizational bot token with appropriate permissions.
           ORIGINAL_MESSAGE: true
           OVERWRITE_EXISTING_PR: true # Allows overwriting of existing PRs to avoid duplication.
@@ -42,6 +42,5 @@ jobs:
 
           GIT_EMAIL: tomas.sebestik@espressif.com
           GIT_USERNAME: tomassebestik
-
           # GIT_EMAIL: bot@espressif.com
           # GIT_USERNAME: espressif-bot

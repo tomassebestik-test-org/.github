@@ -1,16 +1,22 @@
 ---
-name: DangerJS Pull Request linter
+# This workflow runs DangerJS to lint pull requests when they are opened, edited, reopened, or synchronized.
+# It checks out the PR head and uses the shared DangerJS action to enforce contribution guidelines.
+# Note: This will not work in the pull request where the workflow is added due to the `pull_request_target` trigger.
+
+name: 🎓 DangerJS Pull Request linter
 
 on:
-  pull_request_target:
-    types: [opened, edited, reopened, synchronize]
+  pull_request_target: {types: [opened, edited, reopened, synchronize]}
 
-permissions:
-  pull-requests: write
-  contents: write
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   dangerjs:
+    permissions:
+      pull-requests: write
+      contents: write
     runs-on: ubuntu-latest
     steps:
       - name: Check out PR head
@@ -22,5 +28,5 @@ jobs:
         uses: espressif/shared-github-dangerjs@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          instructions-contributions-file: 'CONTRIBUTING.md'
+        # with:
+        #   instructions-contributions-file: '.github/CONTRIBUTING.md'
