@@ -42,7 +42,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
 
       - name: Run Label Sync
-        uses: srealmoreno/label-sync-action@v1
+        uses: srealmoreno/label-sync-action@v2
         with:
           token: ${{ secrets.GH_PAT }}
           repositories: ${{ env.REPOS }}
